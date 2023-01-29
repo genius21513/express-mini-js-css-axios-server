@@ -6,8 +6,8 @@
   ],
   "verbose": true,
   "execMap": {
-    "js": "npm run js-mini css-all && node src/main.js",
-    "scss": "npm run css-all && node src/main.js"
+    "js": "npm-run-all js-mini css-all && node src/main.js",
+    "scss": "npm-run-all css-all && node src/main.js"
   },
   "watch": [
     "javascript/",

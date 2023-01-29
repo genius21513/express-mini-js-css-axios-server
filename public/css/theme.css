@@ -1,4 +1,9 @@
 @charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600);
+body {
+  font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif !important;
+}
+
 :root {
   --blue: #0179A8;
   --indigo: #346CB0;

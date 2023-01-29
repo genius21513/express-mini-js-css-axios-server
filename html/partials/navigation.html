@@ -77,11 +77,9 @@
         </form><!-- /.top-bar-search -->
       </div><!-- /.top-bar-item -->
       <!-- .top-bar-item -->
-      <div id="account" v-cloak class="top-bar-item top-bar-item-right px-0 d-none d-sm-flex">
+      <div id="account" v-cloak class="top-bar-item top-bar-item-right px-0 d-flex">
         <!-- .nav -->
         <ul class="header-nav nav">
-
-
           <!-- Activities -->
           <!-- .nav-item -->
 
@@ -231,7 +229,7 @@
       <div class="aside-menu overflow-hidden">
         <!-- .stacked-menu -->
         <nav id="stacked-menu" class="stacked-menu">
-          <!-- .menu -->
+          <!-- .menu -->          
           <ul class="menu">
             [[# each data.menus.app.modules ]]
             [[# if links ]]
@@ -276,14 +274,10 @@
         </nav><!-- /.stacked-menu -->
       </div><!-- /.aside-menu -->
       <!-- Skin changer -->
-      <footer class="aside-footer border-top p-2">
-        <button class="btn btn-light btn-block" data-toggle="skin"><span class="d-compact-menu-none">Night mode</span>           
-          [[# if ]]
-            <i class="fas fa-moon ml-1"></i>
-          [[else ]]
-            <i class="fas fa-sun ml-1"></i>
-          [[/if]]
-          
+      <footer class="aside-footer border-top p-2">        
+        <button class="btn btn-light btn-block" data-toggle="skin">
+          <span class="theme-setting-text d-compact-menu-none">Night mode</span>          
+          <i class="theme-setting-icon fas fa-moon ml-1"></i>            
         </button>
       </footer><!-- /Skin changer -->
     </div><!-- /.aside-content -->

@@ -1,1 +1,10 @@
 // put your own variables to customize and override the theme variables
+
+// Google fonts
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600);
+
+$font-family-source-sans-pro: Source Sans Pro, Helvetica Neue, Arial, sans-serif;
+
+body {
+    font-family: $font-family-source-sans-pro !important;
+}

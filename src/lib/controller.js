@@ -41,7 +41,7 @@ function getTemplate(req, res) {
     console.log("Backend Data Provided: " + backendUrl);
     data.getJson(backendUrl, req.cookies[cookie]).then((response) => {
         const serverDataString  = JSON.stringify(response.data);
-        const serverDataInclude = `${SERVER_DATA} = ${serverDataString}`;
+        const serverDataInclude = `${SERVER_DATA} = ${serverDataString}`;        
         res.render(render, { layout: false, data: response.data, serverData: serverDataInclude, static: config });
     }).catch((error) => {
         console.log('Error fetching from backend URL: ' + backendUrl)

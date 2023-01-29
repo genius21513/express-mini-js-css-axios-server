@@ -1,3 +1,11 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600);
+body {
+  font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif !important;
+}
+
 /* put your own styles to customize and override the theme */
+body {
+  font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif;
+}
 
 /*# sourceMappingURL=custom-dark.css.map */

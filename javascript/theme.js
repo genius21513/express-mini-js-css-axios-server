@@ -1909,7 +1909,7 @@ const Looper = (function () {
   const Looper = new Theme()
 
   // toggle skin thought button
-  $('[data-toggle="skin"]').on('click', e => {
+  $('[data-toggle="skin"]').on('click', e => {    
     e.preventDefault()
     const skin = Looper.skin === 'dark' ? 'default' : 'dark'
 
@@ -1918,13 +1918,16 @@ const Looper = (function () {
     // we need to refresh our page after change the skin
     location.reload()
   })
-  .each(function () {
+  .each(function () {    
     const isDarkSkin = Looper.skin === 'dark'
-    const $icon = $(this).find('.fa-moon')
-
+    const $icon = $(this).find('.theme-setting-icon')
+    const $text = $(this).find('.theme-setting-text')
+    
     if (isDarkSkin) {
-      $icon.addClass('far')
-      $icon.removeClass('fas')
+      $text.text(`Light Mode`)
+
+      $icon.addClass('far fa-sun')
+      $icon.removeClass('fas fa-moon')
     }
   })
 
