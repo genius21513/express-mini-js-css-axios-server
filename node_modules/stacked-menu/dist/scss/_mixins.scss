@@ -1,0 +1,50 @@
+@mixin breakpoint-up($breakpoint) {
+  @media (min-width: ($breakpoint + 1px)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($breakpoint) {
+  @media (max-width: ($breakpoint - 1px)) {
+    @content;
+  }
+}
+
+@mixin box-shadow($shadow...) {
+  @if $enable-shadows {
+    box-shadow: $shadow;
+  }
+}
+
+@mixin transition($transition...) {
+  @if $enable-transitions {
+    @if length($transition) == 0 {
+      transition: $transition-base;
+    } @else {
+      transition: $transition;
+    }
+  }
+}
+
+@mixin hover {
+  &:hover { @content }
+}
+
+@mixin hover-focus {
+  &:focus { @content }
+  @include hover { @content }
+}
+
+@mixin active {
+  &:active,
+  &.active { @content }
+}
+
+@mixin hover-focus-active {
+  &:focus,
+  &:active,
+  &.active {
+    @content
+  }
+  @include hover { @content }
+}

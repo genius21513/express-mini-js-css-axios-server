@@ -1,0 +1,124 @@
+/**
+ * Aside compact
+ */
+html.preparing-compact-menu {
+  display: none;
+}
+
+.app.has-compact-menu {
+  .top-bar-brand {
+    background: transparent;
+  }
+
+  .app-aside {
+    width: $app-aside-compact-width;
+
+    + .app-main {
+      padding-left: $app-aside-compact-width;
+    }
+  }
+
+  .aside-menu {
+    &.overflow-hidden.ps {
+      overflow: visible !important;
+    }
+
+    .ps__rail-x,
+    .ps__rail-y {
+      display: none;
+    }
+  }
+
+  .stacked-menu {
+    .menu-subhead {
+      font-weight: $headings-font-weight;
+      font-size: $small-font-size;
+      text-transform: uppercase;
+      color: $body-color;
+    }
+
+    @include media-breakpoint-up("md") {
+      .menu-link {
+        padding-top: .325rem;
+        padding-bottom: .325rem;
+      }
+    }
+
+    .has-child {
+      > .menu {
+        background-color: $dropdown-bg;
+        @include border-right-radius($border-radius);
+
+        .menu {
+          @include border-radius($border-radius);
+        }
+      }
+
+      &.has-open > .menu {
+        box-shadow: $dropdown-box-shadow;
+      }
+    }
+
+    &.stacked-menu-has-collapsible {
+      .has-child .has-child {
+        &.has-open > .menu {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  // compact helper classes
+  .d-compact-menu-none { display: none; }
+  .d-compact-menu-block { display: block; }
+  .d-compact-menu-flex { display: flex; }
+  .d-compact-menu-inline { display: inline; }
+  .d-compact-menu-inline-block { display: inline-block; }
+}
+
+.stacked-menu-has-compact > .menu > .menu-item:not(.has-child) {
+  &:hover > .menu-link {
+    overflow: visible;
+
+    .menu-text {
+      width: auto;
+      height: auto;
+      padding: 0.325rem .5rem;
+      color: $dropdown-color;
+      background-color: $dropdown-bg;
+      line-height: 1.625rem;
+      visibility: visible;
+      opacity: 1;
+      box-shadow: $dropdown-box-shadow;
+      @include border-right-radius($border-radius);
+    }
+  }
+}
+
+
+// Override hoverable styles
+
+.stacked-menu-has-compact,
+.stacked-menu-has-hoverable {
+  .has-child > .menu-link:before {
+    right: $spacer / 2;
+    border-width: 4px;
+    border-left: 4px solid $text-muted; // fallback currentColor
+    border-left: 4px solid currentColor;
+    transform: translateY(-4px);
+    opacity: .64;
+  }
+}
+
+
+// Override collapsible styles
+
+.stacked-menu-has-collapsible {
+  .has-child > .menu {
+
+  }
+
+  &.stacked-menu-has-compact .has-child > .menu-link:after {
+    display: none;
+  }
+}

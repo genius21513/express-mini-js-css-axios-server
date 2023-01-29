@@ -1,0 +1,23 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    ".git",
+    "node_modules/**/node_modules"
+  ],
+  "verbose": true,
+  "execMap": {
+    "js": "npm run js-mini css-all && node src/main.js",
+    "scss": "npm run css-all && node src/main.js"
+  },
+  "watch": [
+    "javascript/",
+    "html/",
+    "scss/",
+    "src/",
+    "config/"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js,json,html,scss"
+}

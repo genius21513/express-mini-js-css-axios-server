@@ -1,0 +1,13 @@
+{
+    "backend": "https://project.indexload.com",
+    "system": "Contkit",
+    "copyright": "2023",
+    "title": "Indexsource - Web UI",
+    "signin": "Sign in to your account",
+    "errors": {
+        "NO_APP_AVAILABLE_TITLE": "No application available",
+        "NO_APP_AVAILABLE_DESCRIPTION": "No application has been configured yet.",
+        "NO_BACKEND_AVAILABLE_TITLE": "Server Maintenance",
+        "NO_BACKEND_AVAILABLE_DESCRIPTION": "The application is currently unavailable, please try again later."
+    }
+}

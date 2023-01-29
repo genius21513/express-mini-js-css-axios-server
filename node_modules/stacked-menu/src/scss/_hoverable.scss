@@ -1,0 +1,83 @@
+/* Give a transition */
+.#{$stacked-menu-class-prefix}-has-hoverable {
+  .has-child > .menu {
+    transform-origin: 0 0;
+    @include transition(opacity 150ms linear, transform 150ms linear);
+  }
+  /** except level 1 .has-active */
+  .has-child:not(.has-active) > .menu {
+    transform: scale(.6);
+  }
+}
+.#{$stacked-menu-class-prefix}-has-hoverable.#{$stacked-menu-class-prefix}-has-compact {
+  /** level 1 */
+  > .menu > .has-child > .menu {
+    @include transition(opacity 150ms linear, transform 150ms linear);
+  }
+  /** overwrite for all */
+  .has-child > .menu {
+    transform: scale(.6);
+  }
+}
+
+/* Behavior */
+.#{$stacked-menu-class-prefix}-has-hoverable,
+.#{$stacked-menu-class-prefix}-has-compact {
+  /** except level 1 .has-active */
+  .has-child {
+    &.has-open:not(.has-active) > .menu {
+      position: absolute;
+      width: 200px;
+      top: 0;
+      left: 100%;
+      height: auto;
+      visibility: visible;
+      opacity: 1;
+      transform: scale(1);
+    }
+    > .menu {
+      .menu-item > .menu .menu-link,
+      .menu-item > .menu .menu .menu-link {
+        padding-left: ($stacked-menu-padder * 2);
+      }
+    }
+    /** caret */
+    > .menu-link {
+      &:before {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        /** the caret */
+        border-right:8px solid $stacked-menu-child-bg;
+        transform: translateY(-8px);
+      }
+    }
+  }
+}
+
+/** hoverable on compact mode */
+.#{$stacked-menu-class-prefix}-has-hoverable.#{$stacked-menu-class-prefix}-has-compact {
+  /** overwrite for all */
+  .has-child.has-open {
+    > .menu {
+      position: absolute;
+      width: 200px;
+      top: 0;
+      left: 100%;
+      height: auto;
+      visibility: visible;
+      opacity: 1;
+      border-radius: 0 $stacked-menu-border-radius $stacked-menu-border-radius 0;
+      transform: scale(1);
+
+      .menu-item > .menu-link {
+        padding-left: ($stacked-menu-padder * 2);
+      }
+    }
+  }
+}

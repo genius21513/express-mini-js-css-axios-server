@@ -1,0 +1,40 @@
+{
+  "name": "web",
+  "description": "Web Platform",
+  "version": "1.0.0",
+  "homepage": "https://indexsource.org",
+  "main": "src/main.js",
+  "private": true,
+  "scripts": {
+    "start": "nodemon --config nodemon.json",
+    "go": "nodemon src/main.js",
+    "sync": "nodemon src/main.js & browser-sync start --proxy 'localhost:8085' --files 'html'",
+    "build": "npm-run-all css-compile css-mini js-mini",
+    "css-all": "npm-run-all css-compile css-mini",
+    "css-compile": "sass --style expanded --embed-sources scss/:public/css/ -q",
+    "css-mini": "cleancss -O1 --format breakWith=lf --with-rebase --batch-suffix \"\" -o public/css/min -b public/css/*.css",
+    "js-mini": "uglifyjs-folder javascript/ -eo public/js --pattern \"**/*.js,!**/*min.js\" --log-level error"
+  },
+  "dependencies": {
+    "axios": "^1.2.5",
+    "body-parser": "^1.20.0",
+    "bootstrap": "^4.4.1",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^16.0.3",
+    "exp-config": "^4.2.0",
+    "express": "^4.18.2",
+    "express-handlebars": "^5.1.0",
+    "handlebars": "^4.7.7",
+    "handlebars-delimiters": "^1.0.0",
+    "log-timestamp": "^0.3.0",
+    "stacked-menu": "^1.1.12",
+    "node-cache": "^5.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "sass": "^1.35.1",
+    "npm-run-all": "^4.1.5",
+    "clean-css-cli": "^5.6.2",
+    "uglifyjs-folder": "^3.2.0"
+  }
+}

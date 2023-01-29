@@ -1,0 +1,292 @@
+/** The root StackedMenu */
+.#{$stacked-menu-class-prefix} {
+  position: relative;
+  padding: .25rem 0;
+  background-color: $stacked-menu-bg;
+
+  ul.menu {
+    display: block;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+
+    + .menu {
+      margin-top: 1em;
+    }
+  }
+
+  .menu-header {
+    margin: .5em 0 0;
+    padding: $stacked-menu-padding;
+    color: $stacked-menu-color-disabled;
+    font-size: $stacked-menu-header-font-size;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    > .badge,
+    > .label {
+      position: absolute;
+      right: $stacked-menu-padder + ($stacked-menu-padder/2);
+      z-index: 2;
+    }
+  }
+
+  .menu-subhead {
+    display: none;
+    padding: $stacked-menu-padding;
+    font-size: $stacked-menu-font-size;
+    color: $stacked-menu-child-active-color;
+    line-height: 1.75em;
+    overflow: hidden;
+  }
+
+  .menu-link {
+    position: relative;
+    display: block;
+    padding: $stacked-menu-padding;
+    font-size: $stacked-menu-font-size;
+    color: $stacked-menu-child-color;
+    text-decoration: none;
+    line-height: 1.75em;
+    overflow: hidden;
+    outline: 0;
+
+    > .menu-icon {
+      width: 1.25em;
+      margin-right: .5em;
+      text-align: center;
+      font-size: $stacked-menu-icon-size;
+      color: $stacked-menu-icon-color;
+    }
+
+    > .badge,
+    > .label {
+      position: absolute;
+      right: $stacked-menu-padder + ($stacked-menu-padder/2);
+      margin-top: .25em;
+      z-index: 2;
+    }
+
+    @include hover-focus {
+      color: $stacked-menu-child-hover-color;
+      background-color: $stacked-menu-child-hover-bg;
+      text-decoration: none;
+      overflow: visible;
+
+      .menu-icon {
+        color: $stacked-menu-icon-hover-color;
+      }
+    }
+  }
+
+  /* global state */
+  .menu-item {
+
+    + .menu-item {
+      margin-top: 0;
+    }
+
+    &.has-open:not(.has-active) {
+      > .menu-link {
+        background-color: $stacked-menu-child-hover-bg;
+        color: $stacked-menu-child-hover-color;
+        .menu-icon {
+          color: $stacked-menu-icon-hover-color;
+        }
+      }
+    }
+
+    &.has-active {
+      > .menu-link {
+        background-color: $stacked-menu-child-active-bg;
+        color: $stacked-menu-child-active-color;
+        .menu-icon {
+          color: $stacked-menu-icon-active-color;
+        }
+      }
+    }
+  }
+
+  /* nav child */
+  .has-child {
+    position: relative;
+    > .menu {
+      height: 0;
+      visibility: hidden;
+      opacity: 0;
+      background-color: $stacked-menu-child-bg;
+    }
+    &.has-active:hover > .menu,
+    &.has-open > .menu {
+      overflow: visible;
+    }
+    &.has-active > .menu {
+      height: auto;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  /* nav level 1 */
+  > .menu > .menu-item {
+    > .menu-link {
+      color: $stacked-menu-color;
+      @include hover-focus {
+        color: $stacked-menu-hover-color;
+        background-color: $stacked-menu-hover-bg;
+      }
+    }
+    &.has-open > .menu-link {
+      color: $stacked-menu-hover-color;
+      background-color: $stacked-menu-hover-bg;
+    }
+
+    &.has-active > .menu-link {
+      background-color: $stacked-menu-active-bg;
+      color: $stacked-menu-active-color;
+      @include box-shadow(inset 3px 0 0 $stacked-menu-accent-color);
+    }
+
+    /* level 1 */
+    > .menu {
+      .menu-link {
+        padding-left: ($stacked-menu-padder * 6);
+      }
+
+      /* level 2 */
+      .menu {
+        .menu-link {
+          padding-left: ($stacked-menu-padder * 8);
+        }
+
+        /* level 3 */
+        .menu {
+          .menu-link {
+            padding-left: ($stacked-menu-padder * 10);
+          }
+        }
+      }
+    }
+  }
+
+  /* disabled state */
+  .menu-item.disabled > .menu-link,
+  .menu-item > .menu-link.disabled {
+    color: $stacked-menu-color-disabled;
+
+    .menu-icon {
+      color: $stacked-menu-color-disabled;
+    }
+
+    @include hover-focus {
+      &,
+      .menu-icon {
+        background-color: transparent;
+        color: $stacked-menu-color-disabled;
+      }
+    }
+  }
+}
+
+
+/* Compact */
+.#{$stacked-menu-class-prefix}-has-compact {
+  .has-child.has-active > .menu {
+    visibility: hidden;
+    height: 0;
+    opacity: 0;
+  }
+
+  .has-child {
+    &.has-active {
+      .menu-subhead {
+        background-color: $stacked-menu-active-bg;
+      }
+    }
+    .menu-subhead {
+      display: block;
+    }
+  }
+
+  > .menu {
+    > .menu-item > .menu-link {
+      text-align: center;
+      padding-right: 0;
+      padding-left: 0;
+      max-height: 40px;
+
+      > .badge,
+      > .label {
+        top: 0;
+        right: ($stacked-menu-padder/2);
+      }
+
+      .menu-icon {
+        margin: 0;
+        font-size: 1.25em;
+        line-height: 1.5em;
+      }
+    }
+    > .menu-item.has-child > .menu-link .menu-text {
+      display: none;
+    }
+    > .menu-header {
+      // transform to empty space
+      margin: 0;
+      height: 0;
+      overflow: hidden;
+      visibility: hidden;
+      opacity: 0;
+      user-select: none;
+    }
+    > .menu-item:not(.has-child) > .menu-link {
+      .menu-text {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 100%;
+        padding: $stacked-menu-padder ($stacked-menu-padder*1.5) $stacked-menu-padder 0;
+        border-radius: 0 $stacked-menu-border-radius $stacked-menu-border-radius 0;
+        width: 0;
+        height: 0;
+        visibility: hidden;
+        opacity: 0;
+        background-color: $stacked-menu-hover-bg;
+        line-height: 1.75em;
+        white-space: nowrap;
+        @include transition(opacity 150ms linear);
+      }
+
+      @include hover {
+        .menu-text {
+          width: auto;
+          height: auto;
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+    > .menu-item.has-active > .menu-link .menu-text {
+      background-color: $stacked-menu-active-bg;
+    }
+    > .menu-item.disabled > .menu-link,
+    > .menu-item > .menu-link.disabled {
+      .menu-text {
+        background-color: $stacked-menu-bg;
+      }
+    }
+    > .menu-item.has-child {
+      > .menu-link {
+        &:before {
+          content: none;
+        }
+        .menu-text {
+          padding: $stacked-menu-padding;
+          text-align: left;
+          width: 200px;
+        }
+      }
+    }
+  }
+}

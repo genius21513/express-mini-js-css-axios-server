@@ -1,0 +1,23 @@
+.navbar-expand {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+
+    .app-header > &#{$infix} {
+      @include media-breakpoint-down($breakpoint) {
+        max-height: 100vh;
+        overflow-y: auto;
+      }
+    }
+  }
+}
+
+.nav-item {
+  .fa,
+  .fas,
+  .oi,
+  .dropdown-toggle:after {
+    position: relative;
+    top: .125rem;
+  }
+}

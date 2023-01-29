@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+ [[> head ]]
+
+  <body>
+    <!--[if lt IE 10]>
+    <div class="page-message" role="alert">You are using an <strong>outdated</strong> browser. Please <a class="alert-link" href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</div>
+    <![endif]-->
+    <!-- .empty-state -->
+    <main class="empty-state empty-state-fullpage bg-black" id="auth">
+      <!-- .empty-state-container -->
+      <div class="empty-state-container">
+        <div class="card">
+          <div class="card-header bg-light text-left">
+            <i class="fa fa-fw fa-circle text-red"></i> <i class="fa fa-fw fa-circle text-yellow"></i> <i class="fa fa-fw fa-circle text-teal"></i>
+          </div>
+          <div class="card-body">
+            <div class="state-figure">
+              <img class="img-fluid" src="/assets/images/illustration/img-2.svg" alt="" style="max-width: 320px">
+            </div>
+            <h3 class="state-header"> Access denied </h3>
+            <p class="state-description lead"> Return to login to to reload application </p>
+            <div class="state-action">
+              <a href="/login" class="btn btn-lg btn-light"><i class="fa fa-angle-right"></i> Login</a>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.empty-state-container -->
+    </main><!-- /.empty-state -->
+    <!-- BEGIN BASE JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="/public/libs/popper.js/umd/popper.min.js"></script>
+    <script src="/public/libs/bootstrap/js/bootstrap.min.js"></script>
+    <!-- END BASE JS -->
+    <!-- BEGIN THEME JS -->
+    <script src="/public/js/theme.min.js"></script>
+    <!-- END THEME JS -->
+
+    <script src="/public/libs/jquery.redirect/jquery.redirect.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
+    <!-- LOGIN VUE JS -->
+    <script src="/public/js/out.min.js"></script>
+
+
+  </body>
+</html>

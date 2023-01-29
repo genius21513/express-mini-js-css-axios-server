@@ -1,0 +1,35 @@
+$enable-shadows:              true !default;
+$enable-transitions:          true !default;
+$transition-base:             all 150ms linear !default;
+
+$stacked-menu-class-prefix:         'stacked-menu' !default;
+$stacked-menu-breakpoint:           992px !default;
+$stacked-menu-padder:               .5rem !default;
+$stacked-menu-border-radius:        0 !default;
+$stacked-menu-bg:                   #15191d !default;
+$stacked-menu-child-bg:             lighten($stacked-menu-bg, 3) !default;
+$stacked-menu-accent-color:         #5d67ad !default;
+// nav menu
+$stacked-menu-font-size:          .875rem !default;
+$stacked-menu-header-font-size:   .8125rem !default;
+$stacked-menu-padding:            $stacked-menu-padder ($stacked-menu-padder * 2) !default;
+
+$stacked-menu-icon-size:            1rem !default;
+
+// theme
+$stacked-menu-hover-bg:           darken($stacked-menu-bg, 3) !default;
+$stacked-menu-active-bg:          lighten($stacked-menu-bg, 5) !default;
+$stacked-menu-color:              #ccc !default;
+$stacked-menu-hover-color:        #eee !default;
+$stacked-menu-active-color:       #eee !default;
+$stacked-menu-color-disabled:     #555 !default;
+// icon
+$stacked-menu-icon-color:          #999 !default;
+$stacked-menu-icon-hover-color:    $stacked-menu-hover-color !default;
+$stacked-menu-icon-active-color:   $stacked-menu-active-color !default;
+// child
+$stacked-menu-child-hover-bg:           transparent !default;
+$stacked-menu-child-active-bg:          transparent !default;
+$stacked-menu-child-color:              #999 !default;
+$stacked-menu-child-hover-color:        $stacked-menu-accent-color !default;
+$stacked-menu-child-active-color:       #fff !default;

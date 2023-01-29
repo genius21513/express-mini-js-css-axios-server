@@ -1,0 +1,6 @@
+# Ignore all except source script
+
+demo/*
+dist/*
+docs/*
+src/scss/*

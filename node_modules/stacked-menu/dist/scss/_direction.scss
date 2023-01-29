@@ -1,0 +1,70 @@
+/** open menu to left direction */
+/** Core */
+.#{$stacked-menu-class-prefix}-has-left {
+  > .menu > .menu-item {
+    &.has-active > .menu-link {
+      @include box-shadow(inset -3px 0 0 $stacked-menu-accent-color);
+    }
+  }
+  /** compact */
+  &.#{$stacked-menu-class-prefix}-has-compact {
+    > .menu {
+      > .menu-item > .menu-link > .badge {
+        right: auto;
+        left: ($stacked-menu-padder/2);
+      }
+      > .menu-item:not(.has-child) > .menu-link {
+        .menu-text {
+          right: 100%;
+          left: auto;
+          padding: $stacked-menu-padder 0 $stacked-menu-padder ($stacked-menu-padder*1.5);
+          border-radius: $stacked-menu-border-radius 0 0 $stacked-menu-border-radius;
+        }
+      }
+    }
+  }
+}
+
+/** Behavior */
+.#{$stacked-menu-class-prefix}-has-left {
+  &.#{$stacked-menu-class-prefix}-has-hoverable {
+    .has-child > .menu {
+      transform-origin: 100% 0;
+    }
+  }
+  &.#{$stacked-menu-class-prefix}-has-collapsible.#{$stacked-menu-class-prefix}-has-compact {
+    > .menu > .has-child > .menu {
+      transform-origin: 100% 0;
+    }
+  }
+
+  &.#{$stacked-menu-class-prefix}-has-hoverable,
+  &.#{$stacked-menu-class-prefix}-has-compact {
+    .has-child.has-open:not(.has-active) {
+      > .menu {
+        left: auto;
+        right: 100%;
+      }
+      // caret
+      > .menu-link {
+        &:before {
+          right: auto;
+          left: 0;
+          // the caret
+          border-right: 0 solid transparent;
+          border-left: 8px solid $stacked-menu-child-bg;
+        }
+      }
+    }
+  }
+  /** both hoverable & collapsible on compact mode */
+  &.#{$stacked-menu-class-prefix}-has-hoverable.#{$stacked-menu-class-prefix}-has-compact,
+  &.#{$stacked-menu-class-prefix}-has-collapsible.#{$stacked-menu-class-prefix}-has-compact {
+    .has-child.has-open {
+      > .menu {
+        left: auto;
+        right: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,290 @@
+
+<!-- Modal for Notifications -->
+<div class="modal modal-alert fade" tabindex="-1" id="notificationModal" data-backdrop="static" role="dialog" aria-labelledby="notificationModalLabel" >
+  <!-- .modal-dialog -->
+  <div class="modal-dialog" role="document">
+    <!-- .modal-content -->
+    <div class="modal-content">
+      <!-- .modal-header -->
+      <div class="modal-header">
+        <h5 id="exampleModalAlertWarningLabel" class="modal-title">
+          <i id="notification-icon" class="oi oi-flag text-warning mr-1"></i> <span class="modal-title-text">Notification</span>
+        </h5>
+      </div><!-- /.modal-header -->
+      <!-- .modal-body -->
+      <div class="modal-body">
+        <p>  </p>
+      </div><!-- /.modal-body -->
+      <!-- .modal-footer -->
+      <div class="modal-footer">
+        <a class="btn btn-primary" href="#" id="notification-link" role="button">Details</a>
+        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+      </div><!-- /.modal-footer -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<header class="app-header app-header-dark">
+  <!-- .top-bar -->
+  <div class="top-bar">
+    <!-- .top-bar-brand -->
+    <div class="top-bar-brand">
+      <!-- toggle aside menu -->
+      <button class="hamburger hamburger-squeeze mr-2" type="button" data-toggle="aside-menu" aria-label="toggle aside menu"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button> <!-- /toggle aside menu -->
+      <a href="index">[[ data.menus.app.name ]]</a>
+    </div><!-- /.top-bar-brand -->
+    <!-- .top-bar-list -->
+    <div class="top-bar-list">
+      <!-- .top-bar-item -->
+      <div class="top-bar-item px-2 d-md-none d-lg-none d-xl-none">
+        <!-- toggle menu -->
+        <button class="hamburger hamburger-squeeze" type="button" data-toggle="aside" aria-label="toggle menu"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button> <!-- /toggle menu -->
+      </div><!-- /.top-bar-item -->
+      <!-- .top-bar-item -->
+      <div class="top-bar-item top-bar-item-full">
+        <!-- .top-bar-search -->
+        <form class="top-bar-search">
+          <!-- .input-group -->
+          <div class="input-group input-group-search dropdown">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><span class="oi oi-magnifying-glass"></span></span>
+            </div><input type="text" class="form-control" data-toggle="dropdown" aria-label="Search" placeholder="Search"> <!-- .dropdown-menu -->
+            <div class="dropdown-menu dropdown-menu-rich dropdown-menu-xl ml-n4 mw-100">
+              <div class="dropdown-arrow ml-3"></div><!-- .dropdown-scroll -->
+              <div class="dropdown-scroll perfect-scrollbar h-auto" style="max-height: 360px">
+                <!-- .list-group -->
+                <div class="list-group list-group-flush list-group-reflow mb-2">
+                  <h6 class="list-group-header d-flex justify-content-between">
+                    <span>Shortcut</span>
+                  </h6><!-- .list-group-item -->
+                  <div class="list-group-item py-2">
+                    <a href="#" class="stretched-link"></a>
+                    <div class="tile tile-sm bg-muted">
+                      <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="ml-2"> Create user </div>
+                  </div><!-- /.list-group-item -->
+                  <h6 class="list-group-header d-flex justify-content-between mt-2">
+                    <span>In projects</span> <a href="#" class="font-weight-normal">Show more</a>
+                  </h6><!-- .list-group-item -->
+                  </div><!-- /.list-group -->
+              </div><!-- /.dropdown-scroll -->
+              <a href="#" class="dropdown-footer">Show all results</a>
+            </div><!-- /.dropdown-menu -->
+          </div><!-- /.input-group -->
+        </form><!-- /.top-bar-search -->
+      </div><!-- /.top-bar-item -->
+      <!-- .top-bar-item -->
+      <div id="account" v-cloak class="top-bar-item top-bar-item-right px-0 d-none d-sm-flex">
+        <!-- .nav -->
+        <ul class="header-nav nav">
+
+
+          <!-- Activities -->
+          <!-- .nav-item -->
+
+          <li [[^ data.activities ]] style='display: none' [[/ data.activities ]] class="nav-item dropdown header-nav-dropdown[[#data.activities.containsUnread]] has-notified[[/data.activities.containsUnread]]">
+            <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="oi oi-pulse"></span></a> <!-- .dropdown-menu -->
+            <div class="dropdown-menu dropdown-menu-rich dropdown-menu-right">
+              <div class="dropdown-arrow"></div>
+              <h6 class="dropdown-header stop-propagation">
+                <span>Activities
+                  [[# data.activities.containsUnread ]]<span class="badge">([[ data.activities.unread ]])</span>[[/ data.activities.containsUnread ]]
+                </span><!--[[#data.activities.containsUnread]]<a href="#">Mark all as read</a>[[/data.activities.containsUnread]]-->
+              </h6><!-- .dropdown-scroll -->
+              <div class="dropdown-scroll perfect-scrollbar">
+
+                [[# each data.activities.messages ]]
+                <!-- .dropdown-item -->
+                <a href="#notificationModal" class="showNotification dropdown-item unread" data-toggle="modal" data-target="#notificationModal" data-id="[[ id ]]" data-type="activities">
+                  <div class="user-avatar">
+                    <img src="[[ path ]]" alt="">
+                  </div>
+                  <div class="dropdown-item-body">
+                    <p class="subject"> [[ sender ]] </p>
+                    <p class="text"> [[ title ]]
+                    </p><span class="date"> [[ when ]]</span>
+                  </div>
+                </a> <!-- /.dropdown-item -->
+                [[/ each ]]
+
+              </div><!-- /.dropdown-scroll -->
+              <!--<a href="user-activities.html" class="dropdown-footer">All activities <i class="fas fa-fw fa-long-arrow-alt-right"></i></a> -->
+            </div><!-- /.dropdown-menu -->
+          </li><!-- /.nav-item -->
+          <!-- .nav-item -->
+
+
+          <!-- Messages -->
+          <li [[^ data.messages ]] style='display: none' [[/ data.messages ]] class="nav-item dropdown header-nav-dropdown[[#data.messages.containsUnread]] has-notified[[/data.messages.containsUnread]]">
+            <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="oi oi-envelope-open"></span></a> <!-- .dropdown-menu -->
+            <div class="dropdown-menu dropdown-menu-rich dropdown-menu-right">
+              <div class="dropdown-arrow"></div>
+              <h6 class="dropdown-header stop-propagation">
+                <span>Messages
+                  [[# data.messages.containsUnread ]]<span class="badge">([[ data.messages.unread ]])</span>[[/ data.messages.containsUnread ]]
+                </span><!--[[#data.activities.containsUnread]]<a href="#">Mark all as read</a>[[/data.activities.containsUnread]]-->
+              </h6><!-- .dropdown-scroll -->
+              <div class="dropdown-scroll perfect-scrollbar">
+
+                [[# each data.messages.messages ]]
+                <!-- .dropdown-item -->
+                <a id="showNotification" href="#notificationModal" class="showNotification dropdown-item unread" data-toggle="modal" data-target="#notificationModal" data-id="[[ id ]]" data-type="messages">
+                  <div class="user-avatar">
+                    <img src="[[ path ]]" alt="">
+                  </div>
+                  <div class="dropdown-item-body">
+                    <p class="subject"> [[ sender ]] </p>
+                    <p class="text text-truncate"> [[ title ]] </p>
+                    <span class="date"> [[ when ]]</span>
+                  </div>
+                </a> <!-- /.dropdown-item -->
+                [[/ each ]]
+
+              </div><!-- /.dropdown-scroll -->
+              <!-- <a href="page-messages.html" class="dropdown-footer">All messages <i class="fas fa-fw fa-long-arrow-alt-right"></i></a> -->
+            </div><!-- /.dropdown-menu -->
+          </li><!-- /.nav-item -->
+          <!-- .nav-item -->
+
+          <!-- Apps -->
+          <li [[^ data.apps ]] style='display: none' [[/ data.apps ]]class="nav-item dropdown header-nav-dropdown">
+            <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="oi oi-grid-three-up"></span></a> <!-- .dropdown-menu -->
+            <div class="dropdown-menu dropdown-menu-rich dropdown-menu-right">
+              <div class="dropdown-arrow"></div><!-- .dropdown-sheets -->
+              <div class="dropdown-sheets">
+                [[# each data.apps ]]
+                <div class="dropdown-sheet-item">
+                  <a href="/app/[[ key ]]" class="tile-wrapper"><span class="tile tile-lg bg-[[ color ]]"><i class="[[ icon ]]"></i></span> <span class="tile-peek">[[ name ]]</span></a>
+                </div>
+                [[/ each ]]
+              </div><!-- .dropdown-sheets -->
+            </div><!-- .dropdown-menu -->
+          </li><!-- /.nav-item -->
+
+        </ul><!-- /.nav -->
+
+
+
+        <!-- .btn-account -->
+        <div>
+          <div class="dropdown d-none d-md-flex">
+          <button class="btn-account" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="user-avatar user-avatar-md">
+                <img src="[[ data.image ]]" alt="">
+              </span>
+            <span class="account-summary pr-lg-4 d-none d-lg-block">
+                <span class="account-name"> [[ data.displayName ]] </span>
+                <span class="account-description">[[ data.user.org ]]</span>
+              </span>
+          </button> <!-- .dropdown-menu -->
+          <div class="dropdown-menu">
+            <div class="dropdown-arrow d-lg-none" x-arrow=""></div>
+            <div class="dropdown-arrow ml-3 d-none d-lg-block"></div>
+            <h6 class="dropdown-header d-none d-md-block d-lg-none"> [[ data.displayName ]]  </h6>
+            [[# data.user ]]<a class="dropdown-item" href="user-profile.html">
+              <span class="dropdown-icon oi oi-person"></span> Profile
+            </a>[[/ data.user ]]
+            <a class="dropdown-item" href="#" v-on:click.prevent="logout">
+              <span class="dropdown-icon oi oi-account-[[^ data.user ]]login[[/ data.user ]][[# data.user ]]logout[[/ data.user ]]"></span> [[^ data.user ]]Login[[/ data.user ]][[# data.user ]]Logout[[/ data.user ]]
+            </a>
+          </div><!-- /.dropdown-menu -->
+        </div><!-- /.btn-account -->
+        </div><!-- /.account -->
+      </div><!-- /.top-bar-item -->
+    </div><!-- /.top-bar-list -->
+  </div><!-- /.top-bar -->
+</header><!-- /.app-header -->
+
+
+ <!-- .app-aside -->
+ <aside class="app-aside app-aside-expand-md app-aside-light">
+    <!-- .aside-content -->
+    <div class="aside-content">
+      <!-- .aside-header -->
+      <header class="aside-header d-block d-md-none">
+        <!-- .btn-account -->
+        <button class="btn-account" type="button" data-toggle="collapse" data-target="#dropdown-aside">
+          <span class="user-avatar user-avatar-lg">
+            <img src="[[ data.image ]]" alt="">
+          </span>
+          <span class="account-icon"><span class="fa fa-caret-down fa-lg"></span></span>
+          <span class="account-summary">
+            <span class="account-name"> [[ data.displayName ]] </span>
+            <span class="account-description">[[ data.user.org ]]</span>
+          </span>
+        </button> <!-- /.btn-account -->
+        <!-- .dropdown-aside -->
+        <div id="dropdown-aside" class="dropdown-aside collapse">
+          <!-- dropdown-items -->
+          <div class="pb-3">
+            [[# data.user ]]<a class="dropdown-item" href="user-profile.html"><span class="dropdown-icon oi oi-person"></span> Profile</a>[[/ data.user ]]
+            <a class="dropdown-item" href="#" v-on:click.prevent="logout">
+              <span class="dropdown-icon oi oi-account-[[^ data.user ]]login[[/ data.user ]][[# data.user ]]logout[[/ data.user ]]"></span> [[^ data.user ]]Login[[/ data.user ]][[# data.user ]]Logout[[/ data.user ]]
+            </a>
+          </div><!-- /dropdown-items -->
+        </div><!-- /.dropdown-aside -->
+      </header><!-- /.aside-header -->
+      <!-- .aside-menu -->
+      <div class="aside-menu overflow-hidden">
+        <!-- .stacked-menu -->
+        <nav id="stacked-menu" class="stacked-menu">
+          <!-- .menu -->
+          <ul class="menu">
+            [[# each data.menus.app.modules ]]
+            [[# if links ]]
+            <li class="menu-item [[# if active ]] has-active [[/if]]has-child">
+              <a href="#" class="menu-link"><span class="menu-icon [[ icon ]]"></span> <span class="menu-text">[[ name ]]</span>[[#if badge]]<span class="badge [[ badge ]]">[[ badgeText ]]</span>[[/if]]</a>
+              <ul class="menu">
+                [[# each links]]
+                [[# if links]]
+                <li class="menu-item [[#if active]] has-active [[/if]]has-child">
+                  <a href="#" class="menu-link">[[ text ]]</a> <!-- grand child menu -->
+                  <ul class="menu">
+                    [[# each links]]
+                    <li class="menu-item[[#if active]] has-active[[/if]]">
+                      <a href="[[ link ]]" class="menu-link">[[ text ]]</a>
+                    </li>
+                    [[/ each]]
+                  </ul>
+                  [[else]]
+                <li class="menu-item[[#if active]] has-active[[/if]]">
+                  <a href="[[ link ]]" class="menu-link">[[ text ]]</a>
+                  [[/if]]
+                </li>
+                [[else]]
+                [[/each]]
+              </ul>
+              [[else]]
+              [[# if type ]]
+            <li class="menu-header">[[ name ]]
+              [[else]]
+            <li class="menu-item[[#if active]] has-active[[/if]]">
+              <a href="[[ link ]]" class="menu-link"><span class="menu-icon [[ icon ]]"></span> <span class="menu-text">[[ name ]]</span>[[#if badge]]<span class="badge [[ badge ]]">[[ badgeText ]]</span>[[/if]]</a>
+              [[/if]]
+              [[/if]]
+            </li>
+            [[else]]
+            <!-- .menu-item -->
+            <li class="menu-item[[#if active]] has-active[[/if]]">
+              <a href="[[ link ]]" class="menu-link"><span class="menu-icon [[ icon ]]"></span> <span class="menu-text">[[ name ]]</span></a>
+            </li><!-- /.menu-item -->
+            [[/each]]
+          </ul><!-- /.menu -->
+        </nav><!-- /.stacked-menu -->
+      </div><!-- /.aside-menu -->
+      <!-- Skin changer -->
+      <footer class="aside-footer border-top p-2">
+        <button class="btn btn-light btn-block" data-toggle="skin"><span class="d-compact-menu-none">Night mode</span>           
+          [[# if ]]
+            <i class="fas fa-moon ml-1"></i>
+          [[else ]]
+            <i class="fas fa-sun ml-1"></i>
+          [[/if]]
+          
+        </button>
+      </footer><!-- /Skin changer -->
+    </div><!-- /.aside-content -->
+  </aside><!-- /.app-aside -->

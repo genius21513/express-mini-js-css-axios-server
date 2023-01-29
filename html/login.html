@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  [[> head ]]
+
+  <body>
+    <!--[if lt IE 10]>
+    <div class="page-message" role="alert">You are using an <strong>outdated</strong> browser. Please <a class="alert-link" href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</div>
+    <![endif]-->
+    <!-- .auth -->
+    <main class="auth" id="login">
+      <header id="auth-header" class="auth-header">
+        <h1>
+          [[ static.system ]]
+          <span class="sr-only">Sign In</span>
+        </h1>
+        <p>[[ static.signin ]]</a>
+        </p>
+      </header><!-- form -->
+
+      <form class="auth-form">
+      
+        <!-- .form-group -->
+        <div class="form-group" >
+          <div class="form-label-group">
+            <input type="text" ref="email" v-model="email" id="email" class="form-control" placeholder="Email" autofocus> <label for="inputUser">Email or username</label>
+          </div>
+        </div><!-- /.form-group -->
+        <!-- .form-group -->
+        <div class="form-group">
+          <div class="form-label-group">
+            <input type="password" v-model="password" id="password" class="form-control" placeholder="Password"> <label for="inputPassword">Password</label>
+          </div>
+        </div><!-- /.form-group -->
+        <!-- .form-group -->
+        <div class="form-group">
+          <button class="btn btn-lg btn-primary btn-block" v-on:click.prevent="login">Sign In</button>
+        </div><!-- /.form-group -->
+        <!-- .form-group -->
+        <div class="form-group text-center">
+          <div class="custom-control custom-control-inline custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="remember-me"> <label class="custom-control-label" for="remember-me">Keep me signed in</label>
+          </div>
+        </div><!-- /.form-group -->
+        <div class="alert alert-danger alert-dismissible fade show" v-show='alert'>
+          <strong>{{error.title}}</strong> <br/><br/>{{error.message}}
+        </div>
+        <!-- /.form-group -->
+        <div class="alert alert-secondary fade show" v-show='notice'>
+          <span class="fa fa-lg fa-info-circle text-muted mr-2"></span> {{notification.message}}
+        </div>
+        <!-- recovery links -->
+        <div class="text-center pt-3">
+         <a href="auth-recovery-password.html" class="link">Forgot Password?</a>
+        </div><!-- /recovery links -->
+      </form>
+      
+      <!-- copyright -->
+      <footer class="auth-footer">[[ static.copyright ]]
+      </footer>
+    </main>
+    <!-- /.auth -->
+    <!-- BEGIN BASE JS -->
+    <script src="/public/libs/jquery/jquery.min.js"></script>
+    <script src="/public/libs/popper.js/umd/popper.min.js"></script>
+    <script src="/public/libs/bootstrap/js/bootstrap.min.js"></script> <!-- END BASE JS -->
+    <!-- BEGIN PLUGINS JS -->
+    <script src="/public/libs/particles.js/particles.js"></script>
+    <script>
+      /**
+       * Keep in mind that your scripts may not always be executed after the theme is completely ready,
+       * you might need to observe the `theme:load` event to make sure your scripts are executed after the theme is ready.
+       */
+      $(document).on('theme:init', () =>
+      {
+        /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+        particlesJS.load('auth-header', '/public/libs/particles.js/particles.json');
+      })
+    </script> <!-- END PLUGINS JS -->
+    <!-- BEGIN THEME JS -->
+    <script src="/public/js/theme.min.js"></script> <!-- END THEME JS -->
+    <script src="/public/libs/jquery.redirect/jquery.redirect.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
+    <!-- LOGIN VUE JS -->
+    <script src="/public/js/login.min.js"></script>
+
+
+  </body>
+</html>
